@@ -1,0 +1,306 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Hello World App
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /produtos:
+    x-swagger-router-controller: produtoController
+    get:
+      description: Retorna uma lista de produtos
+      operationId: get
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Lista de produtos retornado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao retornar lista de produtos
+    post:
+      description: Operação para adicionar um produto
+      operationId: post
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Produto adicionado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao adicionar produto
+  /produtos/{id}:   
+    x-swagger-router-controller: produtoController
+    get:
+      description: Recupera um produto específico
+      operationId: getById
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Produto retornado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao retornar produto
+    put:
+      description: Operação para atualizar um produto
+      operationId: put
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Produto atualizado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao atualizar produto
+    delete:
+      description: Operação para remover um produto
+      operationId: delete
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Produto removido com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao remover produto    
+  /pedidos:
+    x-swagger-router-controller: pedidoController
+    get:
+      description: Retorna uma lista de pedidos
+      operationId: getPedidos
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Lista de pedidos retornado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao retornar lista de pedidos
+    post:
+      description: Operação para adicionar um pedido
+      operationId: postPedido
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Pedido adicionado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao adicionar pedido
+  /pedidos/{id}:   
+    x-swagger-router-controller: pedidoController
+    get:
+      description: Recupera um pedido específico
+      operationId: getPedidosById
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Pedido retornado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao retornar pedido
+    put:
+      description: Operação para atualizar um pedido
+      operationId: putPedido
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Pedido atualizado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao atualizar pedido
+    delete:
+      description: Operação para remover um pedido
+      operationId: deletePedido
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Pedido removido com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao remover pedido   
+  /compras:
+    x-swagger-router-controller: carrinhoController
+    get:
+      description: Retorna uma lista dos produtos do carrinho
+      operationId: getCompras
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Lista dos produtos do carrinho retornado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao retornar lista dos produtos do carrinho
+    post:
+      description: Operação para adicionar um produto no carrinho
+      operationId: postCompras
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Produto adicionado no carrinho com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao adicionar produto no carrinho
+  /compras/{id}:   
+    x-swagger-router-controller: carrinhoController
+    get:
+      description: Recupera um produto específico do carrinho
+      operationId: getComprasById
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Produto do carrinho retornado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao retornar produto do carrinho
+    put:
+      description: Operação para atualizar um produto do carrinho
+      operationId: putCompras
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Produto do carrinho atualizado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao atualizar produto do carrinho
+    delete:
+      description: Operação para remover um produto do carrinho
+      operationId: deleteCompras
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Produto do carrinho removido com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao remover produto do carrinho   
+  /pagamentos:
+    x-swagger-router-controller: pagamentoController
+    get:
+      description: Retorna uma lista de pagamentos já realizados
+      operationId: getPagamentos
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Lista de pagamentos já realizados retornado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao retornar lista de pagamentos já realizados   
+  /pagamentos/{idPedido}:   
+    x-swagger-router-controller: pagamentoController
+    post:
+      description: Realiza o pagamento de um pedido
+      operationId: postPagamentos
+      parameters:
+      - name: idPedido
+        in: path
+        type: string
+        required: true
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: Pagamento do pedido foi realizado com sucesso
+          schema:
+            $ref: "#/definitions/Response"
+        default:
+          description: Erro ao efetuar pagamento do pedido  
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+# complex objects have schema definitions
+definitions:
+  Response:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
