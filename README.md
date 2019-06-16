@@ -4,6 +4,11 @@ Exercício 3 da disciplina API e Web Services (AWS), Prof: Marco Mendes; Curso: 
 To run the server, run:  
     ```
     swagger project start
+    ```  
+    
+    To view swagger documentation, run:  
+    ```
+    swagger project edit
     ```
 
 ### To access web services:  
