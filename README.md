@@ -71,8 +71,9 @@ To run the server, run:
    * Operação para remover um produto:  
     ```   
     DELETE http://127.0.0.1:10010/pedidos/{id}
-    ```       
----- PAGAMENTOS -------------------------------------------------------
+    ```
+      
+---- PAGAMENTOS -------------------------------------------------------  
    * Recupera uma lista de pagamentos já realizados:  
     ```
     GET http://127.0.0.1:10010/pagamentos
